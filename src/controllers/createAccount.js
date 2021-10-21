@@ -1,4 +1,5 @@
 import connection from '../database/databse.js';
+import bcrypt from 'bcrypt';
 import { schemaSignUp } from '../validation/sing-up.js'
 
 async function createAccount(req, res) {
@@ -15,7 +16,8 @@ async function createAccount(req, res) {
             try {
                 const isEmailAvaiable = await connection.query('SELECT id FROM users WHERE email = $1;', [email]);
                 if (isEmailAvaiable.rowCount === 0) {
-                    await connection.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3)', [name, email, password]);
+                    const encryptedPassword = bcrypt.hashSync(password, 10);
+                    await connection.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3)', [name, email, encryptedPassword]);
                     res.sendStatus(201);
                 } else {
                     res.sendStatus(407);
