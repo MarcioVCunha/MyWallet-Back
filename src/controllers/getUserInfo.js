@@ -6,7 +6,8 @@ async function getUserInfo(req, res) {
 
     if (!token) return res.sendStatus(401);
 
-    const result = await connection.query(`
+    try {
+        const result = await connection.query(`
         SELECT 
             users.id, 
             users.name, 
@@ -17,7 +18,10 @@ async function getUserInfo(req, res) {
         WHERE sessions.token = $1; 
     `, [token])
 
-    res.send(result.rows[0]);
+        res.send(result.rows[0]);
+    } catch (error) {
+        console.log(error.message)
+    }
 }
 
 export { getUserInfo }
