@@ -4,6 +4,7 @@ import { createAccount } from './controllers/createAccount.js';
 import { logIn } from './controllers/logIn.js';
 import { getUserInfo } from './controllers/getUserInfo.js';
 import { getUserTransaction } from './controllers/getUserTransaction.js';
+import { addTransaction } from './controllers/addTransaction.js';
 
 const app = express();
 app.use(cors());
@@ -14,5 +15,7 @@ app.post("/login", logIn);
 
 app.get('/user-info', getUserInfo);
 app.get('/user-transaction', getUserTransaction);
+
+app.post('/add-transaction', addTransaction);
 
 app.listen(4000);
