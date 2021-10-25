@@ -5,7 +5,7 @@ import { schemaSignUp } from '../validation/sing-up.js'
 async function createAccount(req, res) {
     const { name, email, password, passwordConfirmation } = req.body;
     if (password !== passwordConfirmation) {
-        res.sendStatus(406);
+        res.sendStatus(400);
     } else {
         const validateSignUp = schemaSignUp.validate({
             name,
@@ -20,7 +20,7 @@ async function createAccount(req, res) {
                     await connection.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3)', [name, email, encryptedPassword]);
                     res.sendStatus(201);
                 } else {
-                    res.sendStatus(407);
+                    res.sendStatus(400);
                 }
             } catch (error) {
                 console.log(error.message);
