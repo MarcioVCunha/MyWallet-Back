@@ -15,10 +15,10 @@ async function getUserInfo(req, res) {
         FROM sessions 
         JOIN users 
         ON sessions."userId" = users.id 
-        WHERE sessions.token = $1; 
+        WHERE sessions.token = $1;
     `, [token])
 
-        res.send(result.rows[0]);
+        res.status(200).send(result.rows[0]);
     } catch (error) {
         console.log(error.message)
     }
