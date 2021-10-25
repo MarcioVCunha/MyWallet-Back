@@ -18,4 +18,4 @@ app.get('/user-transaction', getUserTransaction);
 
 app.post('/add-transaction', addTransaction);
 
-app.listen(4000);
+export default app;
