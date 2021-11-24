@@ -4,6 +4,8 @@ import { schemaSignUp } from '../validation/sing-up.js'
 
 async function createAccount(req, res) {
     const { name, email, password, passwordConfirmation } = req.body;
+
+
     if (password !== passwordConfirmation) {
         res.sendStatus(400);
     } else {
@@ -11,7 +13,8 @@ async function createAccount(req, res) {
             name,
             email,
             password
-        })
+        });
+
         if (validateSignUp.error === undefined) {
             try {
                 const isEmailAvaiable = await connection.query('SELECT id FROM users WHERE email = $1;', [email]);
@@ -26,7 +29,7 @@ async function createAccount(req, res) {
                 console.log(error.message);
             }
         } else {
-            res.sendStatus(400)
+            res.sendStatus(400);
         }
     }
 }

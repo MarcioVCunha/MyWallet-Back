@@ -4,10 +4,7 @@ import 'dayjs/locale/pt-br.js';
 import connection from '../database/databse.js';
 
 async function addTransaction(req, res) {
-    const authorization = req.headers['authorization'];
-    const token = authorization?.replace('Bearer ', '');
-
-    if (!token) return res.sendStatus(401);
+    const token = req.headers.authorization.replace('Bearer ', '');
 
     const { value, description, type } = req.body;
 

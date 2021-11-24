@@ -21,10 +21,10 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: money; Type: TABLE; Schema: public; Owner: postgres
+-- Name: money; Type: TABLE; Schema:  Owner: postgres
 --
 
-CREATE TABLE public.money (
+CREATE TABLE money (
     id integer NOT NULL,
     type text,
     value numeric,
@@ -34,13 +34,13 @@ CREATE TABLE public.money (
 );
 
 
-ALTER TABLE public.money OWNER TO postgres;
+ALTER TABLE money OWNER TO postgres;
 
 --
--- Name: money_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: money_id_seq; Type: SEQUENCE; Schema:  Owner: postgres
 --
 
-CREATE SEQUENCE public.money_id_seq
+CREATE SEQUENCE money_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -49,33 +49,33 @@ CREATE SEQUENCE public.money_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.money_id_seq OWNER TO postgres;
+ALTER TABLE money_id_seq OWNER TO postgres;
 
 --
--- Name: money_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: money_id_seq; Type: SEQUENCE OWNED BY; Schema:  Owner: postgres
 --
 
-ALTER SEQUENCE public.money_id_seq OWNED BY public.money.id;
+ALTER SEQUENCE money_id_seq OWNED BY money.id;
 
 
 --
--- Name: sessions; Type: TABLE; Schema: public; Owner: postgres
+-- Name: sessions; Type: TABLE; Schema:  Owner: postgres
 --
 
-CREATE TABLE public.sessions (
+CREATE TABLE sessions (
     id integer NOT NULL,
     "userId" integer,
     token text
 );
 
 
-ALTER TABLE public.sessions OWNER TO postgres;
+ALTER TABLE sessions OWNER TO postgres;
 
 --
--- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: sessions_id_seq; Type: SEQUENCE; Schema:  Owner: postgres
 --
 
-CREATE SEQUENCE public.sessions_id_seq
+CREATE SEQUENCE sessions_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -84,20 +84,20 @@ CREATE SEQUENCE public.sessions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.sessions_id_seq OWNER TO postgres;
+ALTER TABLE sessions_id_seq OWNER TO postgres;
 
 --
--- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema:  Owner: postgres
 --
 
-ALTER SEQUENCE public.sessions_id_seq OWNED BY public.sessions.id;
+ALTER SEQUENCE sessions_id_seq OWNED BY sessions.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: postgres
+-- Name: users; Type: TABLE; Schema:  Owner: postgres
 --
 
-CREATE TABLE public.users (
+CREATE TABLE users (
     id integer NOT NULL,
     name text,
     email text,
@@ -105,13 +105,13 @@ CREATE TABLE public.users (
 );
 
 
-ALTER TABLE public.users OWNER TO postgres;
+ALTER TABLE users OWNER TO postgres;
 
 --
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: users_id_seq; Type: SEQUENCE; Schema:  Owner: postgres
 --
 
-CREATE SEQUENCE public.users_id_seq
+CREATE SEQUENCE users_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -120,79 +120,79 @@ CREATE SEQUENCE public.users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.users_id_seq OWNER TO postgres;
+ALTER TABLE users_id_seq OWNER TO postgres;
 
 --
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema:  Owner: postgres
 --
 
-ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
-
-
---
--- Name: money id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.money ALTER COLUMN id SET DEFAULT nextval('public.money_id_seq'::regclass);
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
--- Name: sessions id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: money id; Type: DEFAULT; Schema:  Owner: postgres
 --
 
-ALTER TABLE ONLY public.sessions ALTER COLUMN id SET DEFAULT nextval('public.sessions_id_seq'::regclass);
-
-
---
--- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+ALTER TABLE ONLY money ALTER COLUMN id SET DEFAULT nextval('money_id_seq'::regclass);
 
 
 --
--- Data for Name: money; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Name: sessions id; Type: DEFAULT; Schema:  Owner: postgres
 --
 
-COPY public.money (id, type, value, "userId", date, description) FROM stdin;
+ALTER TABLE ONLY sessions ALTER COLUMN id SET DEFAULT nextval('sessions_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema:  Owner: postgres
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: money; Type: TABLE DATA; Schema:  Owner: postgres
+--
+
+COPY money (id, type, value, "userId", date, description) FROM stdin;
 \.
 
 
 --
--- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: sessions; Type: TABLE DATA; Schema:  Owner: postgres
 --
 
-COPY public.sessions (id, "userId", token) FROM stdin;
+COPY sessions (id, "userId", token) FROM stdin;
 \.
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: users; Type: TABLE DATA; Schema:  Owner: postgres
 --
 
-COPY public.users (id, name, email, password) FROM stdin;
+COPY users (id, name, email, password) FROM stdin;
 \.
 
 
 --
--- Name: money_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: money_id_seq; Type: SEQUENCE SET; Schema:  Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.money_id_seq', 33, true);
-
-
---
--- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.sessions_id_seq', 86, true);
+SELECT pg_catalog.setval('money_id_seq', 33, true);
 
 
 --
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: sessions_id_seq; Type: SEQUENCE SET; Schema:  Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 20, true);
+SELECT pg_catalog.setval('sessions_id_seq', 86, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema:  Owner: postgres
+--
+
+SELECT pg_catalog.setval('users_id_seq', 20, true);
 
 
 --

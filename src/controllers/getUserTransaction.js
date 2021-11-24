@@ -1,10 +1,7 @@
 import connection from "../database/databse.js"
 
 async function getUserTransaction(req, res) {
-    const authorization = req.headers['authorization'];
-    const token = authorization?.replace('Bearer ', '');
-
-    if (!token) return res.sendStatus(401);
+    const token = req.headers.authorization.replace('Bearer ', '');
 
     try {
         const userTransaction = await connection.query(`
