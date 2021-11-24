@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/server.js",
-    "start:watch": "npx nodemon ./src/server.js"
+    "start": "NODE_ENV='prod' node ./src/server.js",
+    "dev": "NODE_ENV='dev' npx nodemon ./src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dayjs": "^1.10.7",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jest": "^27.3.1",
     "joi": "^17.4.2",
