@@ -1,6 +1,4 @@
-#My wallet back
-
-#My wallet
+<h1>My wallet back</h1>
 
 <h2>Intoduction</h2>
 
