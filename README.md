@@ -8,6 +8,8 @@ Welcome to My-Wallet-Back project, here I build the database and api for the app
 
 https://my-wallet-front-ebon.vercel.app/
 
+Unfortunately, heroku isn't working anymore, so the deploy of the backend crashed
+
 <h2>More in depth of the project</h2>
 
 The BackEnd part was pretty simple, it just save login and the values of the transactions you do, it also send back to you these informations when asked.
